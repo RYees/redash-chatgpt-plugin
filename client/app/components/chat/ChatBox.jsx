@@ -45,7 +45,6 @@ export default function ChatBox() {
         <div>
             <div className='headbox'>
               <p>query, visualize with AI</p>            
-              {/* <img alt="charimage" src={des} className="avatar" />            */}
             </div>
 
             <div className='chatbox'>
@@ -80,7 +79,6 @@ export default function ChatBox() {
                   value={input}
                   placeholder="Type your message…"
                   onChange={(e) => setInput(e.target.value)}
-                  // onClick={callingPost}
                   onKeyDown={(e) => handler(e)}
               />
             </div>
