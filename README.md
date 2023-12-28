@@ -13,24 +13,26 @@ The Redash ChatGPT Plugin is an integration that brings natural language convers
 ## Requirements Before Installation
 
 Need to install redash instance to your local machine first, follow the below guide to install it
+
 * https://github.com/getredash/redash/wiki/Local-development-setup
 * For more reference: Redash - https://redash.io/
 
 After successful redash instance installation, open the redash source code on your editor and follow the below steps to use the plugin inside your redash dashboard 
 
 ## Dependencies
+
 ``` 
   poetry add openai
 ```
 
 ## Installation
 
-1. Copy the chat folder entirely `client/app/components/chat` to the corresponding place in redash's client -> components folder
-2. Copy the chat.py file entirely `redash/handlers/chat.py to the corresponding place in redash's redash -> handlers folder
+1. Copy the `chat` folder entirely `client/app/components/chat` to the corresponding place in redash's `client/app/components` folder
+2. Copy the `chat.py` file entirely `redash/handlers/chat.py` to the corresponding place in redash's `redash/handlers` folder
    
 Now we finished putting the necessary files for the plugin user interface and flask python code that includes the integration with openai, we now move to how we integrate these two parts inside the redash source code following the below procedure, implement them as stated below
 
-* Go to your redash source code, locate these path client/app/components/ApplicationArea/ApplicationLayout/index.jsx
+* Go to your redash source code, locate these path `client/app/components/ApplicationArea/ApplicationLayout/index.jsx`
 
 * copy and paste the following inside the index.jsx
   
@@ -67,7 +69,7 @@ Now we finished putting the necessary files for the plugin user interface and fl
      );
 ```
 
-* Go to your redash source code, locate these path client/app/components/services, create a file name chat.js and copy the below code
+* Go to your redash source code, locate these path `client/app/components/services`, create a file name chat.js and copy the below code
 
 ```
    import { axios } from "@/services/axios";
@@ -79,15 +81,15 @@ Now we finished putting the necessary files for the plugin user interface and fl
    export default Chat;
 ```
 
-* Go to your redash source code, locate these path redash/handlers/api.py, inside the api.py file copy and add the following line of codes
+* Go to your redash source code, locate these path `redash/handlers/api.py`, inside the api.py file copy and add the following line of codes
+
 ```
    from redash.handlers.chat import (
        ChatResource
    )
 ```
 
-`find api = ApiExt(), these line of code inside the api.py and after it copy and add the below`
-
+find `api = ApiExt()`, these line of code inside the api.py and after it copy and add the below
 
 ```
    api.add_org_resource(ChatResource, "/api/chat", endpoint="chat")
@@ -102,4 +104,6 @@ Now we finished putting the necessary files for the plugin user interface and fl
 ```
 
 
-😉 **NICE WORK, YOUR ARE DONE NOW BUILD YOUR INSTANCE AGAIN AND YOU CAN START CHATTING IN SIDE YOUR REDASH DASHBOARD**
+
+😉 **NICE WORK!!!
+    Now rebuild your instance and get ready to engage in insightful conversations with AI directly within your Redash dashboard**
