@@ -69,13 +69,13 @@ Now we finished putting the necessary files for the plugin user interface and fl
      );
 ```
 
-* Go to your redash source code, locate these path `client/app/components/services`, create a file name chat.js and copy the below code
+* Go to your redash source code, locate these path `client/app/services`, create a file name chat.js and copy the below code
 
 ```
    import { axios } from "@/services/axios";
    
    const Chat = {
-     openai: data => axios.post(api/chat, data),
+     openai: data => axios.post('api/chat', data),
    };
    
    export default Chat;
