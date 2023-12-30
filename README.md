@@ -25,6 +25,14 @@ After successful redash instance installation, open the redash source code on yo
   poetry add openai
 ```
 
+``` 
+  yarn add react-icons
+```
+
+``` 
+  yarn add react-syntax-highlighter
+```
+
 ## Installation
 
 1. Copy the `chat` folder entirely `client/app/components/chat` to the corresponding place in redash's `client/app/components` folder

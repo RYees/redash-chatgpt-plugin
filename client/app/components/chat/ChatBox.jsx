@@ -7,7 +7,7 @@ import Chat from '@/services/chat';
 export default function ChatBox() {
   const [input, setInput] = useState("")
   const [open, setOpen] = useState(false);
-  const [isCopied, setIsCopied] = useState(false);
+  const [copiedStates, setCopiedStates] = useState({});
   const [chatHistory, setChatHistory] = useState([]);
 
   const handler = (event) => {
@@ -36,11 +36,19 @@ export default function ChatBox() {
     };
      setChatHistory((history) => [...history, data]);
      setInput("");
-  }
+  }  
 
-  const handleCopy = (xx) => {
-    copy(xx);
-    setIsCopied(true);
+  const handleCopy = (content) => {
+    copy(content);
+    const updatedCopiedStates = { ...copiedStates };
+    updatedCopiedStates[content] = true;
+    setCopiedStates(updatedCopiedStates);
+
+    setTimeout(() => {
+      const revertedCopiedStates = { ...copiedStates };
+      revertedCopiedStates[content] = false;
+      setCopiedStates(revertedCopiedStates);
+    }, 2000); // Change the duration (in milliseconds) as needed
   };
 
   const formatingCode = (code) => {
@@ -122,7 +130,11 @@ export default function ChatBox() {
                                   <div className="">
                                     <div className='chat-head'>
                                         <div className='copy' onClick={() => handleCopy(part.content)}>
-                                          {isCopied ? <FaCheck className='check'/> : <IoCopy className='copyicon'/>}
+                                          {copiedStates[part.content] ? (
+                                            <FaCheck className='check'/>
+                                          ) : (
+                                            <IoCopy className='copyicon'/>
+                                          )}
                                         </div>
                                         <div className=''>
                                           {part.firstWord}
