@@ -104,8 +104,7 @@ export default function ChatBox() {
     return parts;
   };
 
- 
-
+  
   return (
     <>
       {open?
@@ -153,7 +152,6 @@ export default function ChatBox() {
                                         fontSize: '14px',
                                         lineHeight: '1.5',
                                         maxWidth: '100%',
-                                        width: '27.5rem',
                                         wordBreak: 'break-word',
                                         overflowWrap: 'break-word',
                                         whiteSpace: 'pre-wrap',
